@@ -1,0 +1,98 @@
+\section{RELATED WORK}
+\label{sect:related}
+%In this section you summarize the most related work.
+%Relevant works can be classified based on the "first classification schema" into (1)..~\cite{all references in this group}, (2), ...~\cite{all references in this group}. It also can be classified based on the "second classification schema" into (1)...~\cite{all references in this group}, (2)...~\cite{all references in this group}, and (3)...~\cite{all references in this group}.
+
+% Then you provide the details for each group of work in one or two paragraphs. 
+
+
+%Table\ref{table:relatedWork} positions the {\em PreGo} framework relatively to the other existing routing techniques.
+A paper \cite{eldawy2013cg_hadoop} written by Ahmed Eldawy describes and presents CG Hadoop, which has two version, one is for the Apache Hadoop System, one is for Spatial Hadoop System. The performance of CG Hadoop is improved greatly. It is a kind of new algorithms and the improvement is brought by the algorithms. What we design is to add spatial index to improve the ability that hadoop processes spatial data. 
+
+
+A paper named CloST: A Hadoop-based Storage System for Big Spatio-Temporal Data Analytics \cite{tan2012clost} presented a design and implementation of CloST, which is a scalable big spatio-temporal data storage system to support data analytics using Hadoop. And author presented it to avoid scan the whole dataset when giving a spatio-temporal range. Additionally, the author presented a novel data model which has special treatments on three core attributes including an object id, a location and a time. Based on the model this paper presented, CloST hierarchically partitions data using all core attributes which enables efficient parallel processing of spatio-temporal range scans. Besides, the author presented a new data storage structure which can reduce the size, and propose a new algorithms to add new data to the system. However, the performance can still improve by adjust map reduce layer. Our work in map reduce layer can improve the performance of SpatialHadoop farther.
+
+
+Another paper named  GeoSpark: A Cluster Computing Framework for Processing Large-Scale Spatial Data \cite{yu2015geospark} , which introduces GeoSpark an in-memory cluster computing framework for processing large-scale spatial data. GeoSpark consists three layers, they are Apache Spark Layer, Spatial RDD Layer and Spatial Query Processing Layer. Apache Spark Layer provides basic Spark functionalities that include loading and storing data to disk as well as regular RDD operations, which is like SpatialHadoop's operation layer. Spatial RDD Layer consists of three novel Spatial Resilient Distributed Datasets (SRDDs) and it extends regular Apache Spark RDDs to support geometrical and spatial objects. Besides, GeoSpark provides a geometrical operations library which can accesses Spatial RDDs to perform basic geometrical operations, which makes system users can use the newly defined SRDDs to effectively develop spatial data processing programs in Spark.The Spatial Query Processing Layer this paper presented efficiently executes spatial query processing algorithms, such as range query, knn and join. Additionally, Users can also GeoSpark to create a spatial index which boosts spatial data processing performance in each SRDD partition. And the experiments show that GeoSpark achieves better run time performance than its Hadoop-based counterparts, such as SpatialHadoop. 
+
+
+Another paper named PAIRS: A scalable geo-spatial data analytics platform \cite{klein2015pairs}. This paper presented a new platform called Physical Analytics Integrated Repository and Services (PAIRS), which enables rapid data discovery. And PAIRS also provides a foundation for developing custom analytics. 
+
+
+A paper named Enabling Spatial Big Data via CyberGIS: Challenges and Opportunities \cite{evans2014enabling} , which presented that CyberGIS seeking to synthesize spatial analysis. What we focus on is spatial data processing, and this paper give us a lot of inspiration of spatial analysis.
+
+
+A paper named Hadoop-GIS: A High Performance Spatial Data Warehousing System over MapReduce \cite{aji2013hadoop} , this paper presents Hadoop-GIS a scalable and high performance spatial data warehousing system for running large scale spatial queries on Hadoop. Through spatial,  partitioningHadoop-GIS supports multiple types of spatial queries on MapReduce , customizable spatial query engine RESQUE, implicit parallel spatial query execution on MapReduce, and effective methods for amending query results through handling boundary objects. It also utilizes global partition indexing as well as customizable on demand local spatial indexing to achieve efficient query processing. And it is also integrated into Hive to support declarative spatial queries with an integrated architecture. In this paper, the authors make some experiments which have demonstrated the high efficiency of Hadoop-GIS on query response and high scalability to run on commodity clusters. 
+
+
+A paper named Pigeon: A Spatial MapReduce Language \cite{eldawy2014pigeon} is motivated by the huge amounts of spatial data collected everyday, and it focus more on MapReduce frameworks. The example it uses is Hadoop, which have become a common choice to analyze big spatial data for scientists and people from industry. And user prefer to use high level languages to deal Hadoop for simplicity. Additionally  these languages are designed for primitive non-spatial data and have no support for spatial data types or functions. Pigeon is implemented through user defined functions (UDFs) making it easy to use and compatible with all recent versions of Pig. Our work still used Pigeon as our language layer to operate Spatial Hadoop. This language also allows it to integrate smoothly with existing non-spatial functions and operations such as Filter, Join and Group By.  
+
+
+A paper named Spatial Queries Evaluation with MapReduce \cite{zhang2009spatial} introduces Spatial queries include spatial selection query, spatial join query, nearest neighbor query. Most of spatial queries are computing intensive and individual query evaluation may take even hours. Parallelization seems a good solution for such problems. However, parallel programs must communicate efficiently, balance work across all nodes, and address problems such as failed nodes. Additionally the author presented performance evaluation for the several spatial queries and prove that MapReduce is also appropriate for small scale clusters and other computing intensive applications, which is to provide a efficient data computing and management capabilities.
+
+
+A paper named Implementing WebGIS on Hadoop: A Case Study of Improving Small File I/O Performance on HDFS \cite{liu2009implementing} . Under the situation that Hadoop framework has been widely implemented in various clusters to build large scale, high performance systems. However, it has some drawbacks such as Hadoop distributed file system (HDFS) is designed to manage large files and suffers performance penalty while managing a large amount of small files. As a result, may application like web application, for example, WebGIS, may not get benefits from Hadoop. In this paper, the author presents an approach to optimize I/O performance of small files on HDFS.  The main idea is to combine smaller file into larger file to reduce file number and build index for each file. Additionally, this paper still propose some features like grouping neighboring files and reserving several latest version of data is like to meet the characteristics of WebGIS access patterns. And the experiments of this paper show the improvment of performance.
+
+
+A paper named Research on Vector Spatial Data Storage Schema Based on Hadoop Platform \cite{zheng2013research} is related with the spatial data storage. Under the situation that cloud computing technology is changing the mode of the spatial information industry. Since Hadoop platform provides easy expansion, high performance, high fault tolerance and other advantages,cloud computing technology is applied and provided new ideas for it. In this paper, the author presented that novel vector spatial data storage schema based on it. This method can solve the problems that how to use cloud computing to manage spatial data. Firstly, this vector spatial data storage schema is designed based on column-oriented storage structures and key/value mapping to express spatial topological relations. Besides, this paper designs middleware and merge with vector spatial data storage schema in order to directly store spatial data and present geospatial data access refinement schemes based on GeoTools toolkit. Last but not least, the author verify these storage scheme to through Hadoop experiments.
+
+
+A paper named sksOpen: Efficient Indexing, Querying, and Visualization of Geo-spatial Big Data \cite{lu2013sksopen}, this paper provides a indexing, querying, and visualization of Geo-spatial Big Data. Since the performance of indexing and querying of location-based data is a critical quality of service aspect. Spatial indexing is not available for end-users and it is typically time-consuming. To solve this problem, this paper presents a open source online Indexing and Querying System for Big Geospatial Data, sksOpen. This paper provides ergonomic visualization of query results on interactive maps to facilitate the user's data analysis.
+
+
+A paper named An overview of the Hadoop/MapReduce/HBase framework and its current applications in bioinformatics \cite{taylor2010overview} tries to solve a problem related to Hadoop. Bioinformatics researchers have to face analysis of ultra large-scale data sets, a problem that will only increase at an alarming rate in coming years. Recent developments in open source software, that is, the Hadoop project and associated software, provide a foundation for scaling to petabyte scale data warehouses on Linux clusters, providing fault-tolerant parallelized analysis on such data using a programming style named MapReduce. This paper is concise and clear and describe what the author try to do efficiently and effectively, we are more familiar with MapReduce of Hadoop. The problem we try to solve is to increase the performance of Hadoop when it deal with spatial data instead of bioinformatics data. 
+
+
+A paper named Efficient big data processing in Hadoop MapReduce \cite{dittrich2012efficient} focus on different data management techniques, going from job optimization to physical data organization like data layouts and indexes, and highlight the similarities and differences between Hadoop MapReduce and Parallel DBMS.  And this paper also show and explain the static physical execution plan of Hadoop MapReduce and how it affects job performance. We learn some details about Hadoop's MapReduce and we combine some characteristics about spatial data to improve the ability of MapReduece layer to process spatial big data. 
+
+
+A paper named Voronoi-based Geospatial Query Processing with MapReduc \cite{akdogan2010voronoi}
+introduces Geospatial queries, which have been used in a wide variety of applications such as decision support systems, profile-based marketing, bioinformatics and GIS. However, some existing query-answering approaches only apply to the systems with limited parallel processing capability, far from that of the cloud-based platforms. In this paper, the authors study the problem of parallel geospatial query processing with the MapReduce programming model and propose a method that creates a spatial index, Voronoi diagram, for given data points in 2D space and enables efficient processing of a wide range of GQs.  
+
+A paper named Efficient Spatial Query Processing for Big Data \cite{lee2014efficient} focus on spatial query. Spatial queries are widely used in many data mining and analytics applications. However, a huge and growing size of spatial data makes it challenging to process the spatial queries efficiently. In this paper, authors presents a lightweight and scalable spatial index for big data stored in distributed storage systems. This paper's work is highly related with what we plan to do. SpatialHadoop we work on in this paper is an open source MapReduce extension designed specifically to handle huge datasets of spatial data on Apache Hadoop. SpatialHadoop is shipped with built-in spatial high level language, spatial data types, spatial indexes and efficient spatial operations. Spatial Hadoop has overcome the shortcoming of GIS. (1) \cite{eldawy2015spatialhadoop} SpatialHadoop is build-in Hadoop consequently, Spatial Hadoop inherit nearly all feature of Hadoop (2) SpatialHadoop is different from Hadoop, it support different indexing methods, e.g grid, R tree, and R+ tree, and (3) SpatialHadoop users can interact with Hadoop directly to develop the spatial function that they want to develop. This is in contrast to Hadoop-GIS and other systems that cannot support such kind of flexibility, on the other hand, traditional Hadoop is very restricted in the function they support, however SpatialHadoop has a really well scalability and user friendly interface. All of the spatial index and operation can be edit in the source file, relatively stable than the traditional Hadoop, since the SpatialHadoop is existing as an patch in the Hadoop, any change in the SpatialHadoop will not affect the ground of whole file. We consider that we can improve the performance of Hadoop processing spatial big data further.
+
+
+A paper named A Demonstration of SpatialHadoop: An Efficient MapReduce Framework for Spatial Data \cite{eldawy2013demonstration}  presents SpatialHadoop as the first full-fledged MapRe- duce framework with native support for spatial data. It is closely related to our work. it focus on the MapReduce layer, and we try to improvement it MapReduce layer further in our work by dmodify some code of the program.  
+
+
+A paper named SksOpen: Efficient indexing, querying, and visualization of geo-spatial big data \cite{lu2013sksopen} introduce a method to deal with geo-spatial data. Spatial indexing is typically time-consuming and is not available to end-users. To address this challenge,  the authors present open-sourced an Online Indexing and Querying System for Big Geospatial Data, sksOpen. This paper can bring us some inspiration about spatial index, however, this paper dose not focus on MapReduce layer of Hadoop, which means what we plan to do can improve the performance of processing spatial big data further.
+
+
+A paper named TAREEG: A MapReduce-Based System for Extracting Spatial Data from OpenStreetMap \cite{alarabi2014tareeg} presents TAREEG; a web-service that makes real spatial data, from anywhere in the world, available at the fingertips of every researcher or individual. TAREEG gets all its data by leveraging the richness of OpenStreetMap data set; the most comprehensive available spatial data of the world. Yet, it is still challenging to obtain OpenStreetMap data due to the size limitations, special data format, and the noisy nature of spatial data. Since real spatial data are not easily available for most of the world. This hinders the practicality of many research ideas that need a real spatial data for testing and experiments, however, such data is prohibitively expensive to build or buy for academia or individual researchers. That is the motivation of this paper. Due to the size limitations, the most comprehensive available spatial data of the world is still challenging to obtain OpenStreetMap data , special data format, and the noisy nature of spatial data. TAREEG employs MapReduce-based techniques to make it efficient and easy to extract OpenStreetMap data in a standard form with minimal effort. Experimental results show that TAREEG is highly accurate and efficient. 
+
+
+A paper named Large-Scale Spatial Data Processing on GPUs and GPU-Accelerated Clusters \cite{zhang2015large} reports works on data parallel designs of spatial indexing, spatial joins and several other spatial operations, including polygon rasterization, polygon decomposition and point interpolation. The data parallel designs are further scaled out to distributed computing nodes by integrating single-node GPU implementations with High-Performance Computing (HPC) toolset and the new generation in-memory Big Data systems such as Cloudera Impala.
+
+
+
+% Emphasis the limitations of the existing work in each group
+%For example, most of the work in this group considers .... but without considering the....
+
+
+
+% Summarize and compare in tables and/or classification trees
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{table}[ht]
+%%\small\addtolength{\tabcolsep}{-2pt}
+%%\small\addtolength{\tabcolsep}{-2pt}
+%\caption{Compare and Classify Related Work}        % title of Table
+%\centering                          % used for centering table
+%\vspace*{6pt}                       %add space between the table title and the table itself
+%\resizebox{!}{.09\columnwidth}{
+%\begin{tabular} {l l l}               % left justified columns (2 columns)
+%\hline                              %[0.5ex]            %inserts double horizontal lines
+% & \emph{Group1} & \emph{Group2}\\ \hline
+%\hline                              % inserts single horizontal line
+%\emph{Comparison Attribute1} & \cite{Reference1,Reference3} & \cite{Reference2,Reference3,Reference4} \\ \hline
+%\emph{Comparison Attribute2} & \cite{Related References} & \textbf{\emph{Related References}}\\ \hline
+%inserts single line
+%\end{tabular}
+%}
+%\label{table:relatedWork} % is used to refer this table in the text
+%\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Optional, you differentiate your work from the above ones here. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

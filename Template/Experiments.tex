@@ -1,0 +1,99 @@
+\section{Experimental Evaluation}
+\label{sec:experiments}
+
+% Introductory paragraph
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%This section experimentally evaluates the performance, accuracy, scalability, usability, etc of the proposed {\em W} system/algorithm/solution and compare it to the {\em competitive} approach .
+
+% time performance, scalability usability
+
+This section provides an extensive experimental study for the performance of SpatialHadoop with MapReduce layer extension and compares it with the original SpatialHadoop framework results. For this paper, we mainly compare it with the original SpatialHadoop instead of other parallel spatial DBMSs or HadoopGIS for two reasons. First, SpatialHadoop \cite{eldawy2015spatialhadoop} paper already presented the superior performance over other parallel spatial DBMSs. Second, the HadoopGIS is not a open source software, thus it is not appropriate to evaluate it for research purpose. SpatialHadoop was implemented inside Hadoop 2.7.2 on Java 1.8, our MapReduce extension version was developed based on the previous SpatialHadoop and compiled with the same steps. 
+
+All experiments are conducted on Amazon Elastic MapReduce Service, which is a abstract service combines Amazon EC2 service and Amazon S3 service. Amazon Elastic MapReduce (Amazon EMR) is a web service that makes it easy to quickly and cost-effectively process vast amounts of data. Amazon EMR simplifies big data processing, providing a managed Hadoop framework that makes it easy, fast, and cost-effective for you to distribute and process vast amounts of your data across dynamically scalable Amazon EC2 instances. Amazon EMR securely and reliably handles your big data use cases, including log analysis, web indexing, data warehousing, machine learning, financial analysis, scientific simulation, and bioinformatics.
+
+
+% The measurements 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%In these experiments, we are concerned with these factors; CPU time, memory overhead, amount of energy saving, length of idle distance, accuracy of the prediction, number of disk access, etc or ....
+In these experiments, we used mainly two categories of real datasets, TIGER and OpenStreetMap (OSM) to test various performance aspects. We focused on the time efficiency. TIGER datasets are real datasets which represents spatial features in the US, such as streets and rivers. Two specific datasets were picked for our evaluation experiments. The first one is Counties information of US, with size 149MB, which contains of 3,233 Polygons spatial data records. The second one is 5-Digit ZIP Code Tabulation Area (ZCTA5), with size 1GB, which contains of 33,144 Polygons. The steps for conducting time measurements are explained in later sections.
+
+
+\subsection{Competitive Approach}
+\label{sec:competitive}
+% Briefly describe the approach to which we are comparing your proposed system. 
+
+For comparing with the original SpatialHadoop, we used the same benchmark data as described above. A Hadoop cluster with 1 master node and 10 slave nodes was reserved in Amazon EMR service. We used the cluster to test our SpatialHadoop system. 
+
+\subsection{Experimental Setup}
+% describe the data (real and/or synthetic) and how did you obtain it in details with references. 
+
+% describe the workloads and the ranges for each parameter you tune
+
+% Describe the programming language of your implementation
+
+% Describe the hardware and operating system used to run the experiments 
+
+% State any required assumptions 
+
+% You might describe the GUI, if any. 
+
+
+\subsection{Experiment 1}
+\label{subsec:Exp1}
+
+%% experiments figures and charts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure*}[t]
+%\centering
+%\subfigure[Name1]{
+%\vtop{\vskip0pt
+%\hbox{\includegraphics[scale = 0.341]{subFigure1.eps}}
+%\vspace{1.5pt}
+%}}
+%%\hspace{-0.15in}
+%%scale = {0.333
+%\subfigure[Name2]{
+%\vtop{\vskip0pt \hbox{\includegraphics[scale = 0.341]{subFigure2.eps}}
+%\vspace{1.5pt}
+%}}
+%%\hspace{-0.15in}
+%\subfigure[Name3]{
+%\vtop{\vskip0pt \hbox{\includegraphics[scale = 0.341]{subFigure3.eps}}
+%\vspace{1.5pt}
+%}}
+%%\hspace{-0.15in}
+%\subfigure[Name4]{
+%\vtop{\vskip0pt \hbox{\includegraphics[scale = 0.341]{subFigure4.eps}}
+%\vspace{1.5pt}
+%}}
+%\vspace{-5pt}
+%\caption{Title of the Figure}
+%\label{fig:figureLabel}
+%\vspace{-10pt}
+%\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Study the effect of varying the values of the parameters on each metric. 
+% Show the charts (with x and y labels and legends)
+% Describe the reading of each chart/graph including the trend, min/max values, correlation between the results, justification (i.e.g, answer of why question), for any interesting findings (i.e., expected or unexpected findings).
+
+\subsection{Experiment 2}
+\label{subsec:Exp2}
+
+
+\subsection{Experiment N}
+\label{subsec:ExpN}
+
+\subsection{User Study}
+\label{subsec:user}
+% If any,
+% Describe the study and the period of time, locations, and the number and attributes of the participants
+% highlight any findings 
+% List the basic statistics about the user study, e.g., mean, median, variance, standard deviation, min and max. 
+% supporting charts and graphs. 
+
+
+
+\subsection{Experiments Summary}
+\label{subsec:Exp:Summary}
+% State any messages you want to make out from the set of experiments,

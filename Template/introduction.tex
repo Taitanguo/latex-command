@@ -1,0 +1,108 @@
+\section{INTRODUCTION}
+\label{sect: introduction}
+
+% introductory paragraph
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% numbers and statistics are well received. When you use them, you need to cite a reference (e.g., paper, book, website). Follow the style in the references file to add more references. For instance, given that the number of PCs in the world is N~\cite{reference1}, this triggers the ...
+As the web grew in the in the late 1900s and early 2000s search engines and indexes were created to help locate relevant information amid the text-based content. In the early years, search results really were returned by humans. But as the web grew from dozens to millions of pages, automation was needed. Web crawlers were created, many as university-led research projects, and search engine start-ups took off (Yahoo, AltaVista, etc.). One of the open source project called NUTCH. The original team want to invent a way to return web search results faster by distributing data and calculations across different computers so multiple tasks could be accomplished simultaneously. And after several years the Nutch project divided by yahoo to two separate parts, the web crawler part remained as Nutch, and the distributed storage part became Hadoop.
+
+Hadoop is an open-source software framework for storing data and running, applications on clusters of commodity hardware. And Hadoop can provide any kind of data. Open source give Hadoop the ability can be created and maintained by a network of developers from around the globe. Hadoop currently processes large amounts of data using multiple low-cost computers for fast results. One of the top reason why Hadoop widely used is since the ability to store and process huge amount of data. And since Hadoop can handle varieties constant increasing data, which means it can handle social media and internet thing really well. On the other hand, user don't have to processing data before store it. You can store as much data as you want and decide how to use it later. which includes unstructured data like text, images and videos. Another big benefits of using Hadoop is the ability of fault tolerance, if a node goes down, jobs are automatically redirected to other nodes to make sure the distributed computing does not fail. Last but not least, Hadoop has a great scalability, user can easily grow Hadoop system by adding more more nodes.
+
+Basic component of Hadoop including:
+Hadoop common - the libraries and utilities used by other Hadoop modules.
+Hadoop Distributed File System (HDFS) - the Java-based scalable system that stores data across multiple machines without prior organization.
+MapReduce - a software programming model for processing large sets of data in parallel.
+YARN - resource management framework for scheduling and handling resource requests from distributed applications. (YARN is an acronym for Yet Another Resource Negotiator.)
+
+Software component that run on top of Hadoop:
+Pig-  A platform for manipulating data stored in HDFS that includes a compiler for MapReduce programs and a high-level language called Pig Latin. It provides a way to perform data extractions, transformations and loading, and basic analysis without having to write MapReduce programs.
+Hive - a data warehousing and SQL-like query language that presents data in the form of tables. Hive programming is similar to database programming. (It was initially developed by Facebook.)
+
+As the developing of mobile technology and enhancing of internet speed. The spatial data is increasing explosively. Spatial data also known as geospatial data or geographic information it is the data or information that identifies the geographic location of features and boundaries on Earth, such as natural or constructed features, oceans, and more. Spatial data is usually stored as coordinates and topology, and is data that can be mapped. Currently, Geographic information system is the most popular geographical information system, the system designed to capture, store, manipulate, analyze, manage, and present all types of spatial or geographical data. Spatial data is the basis of GIS and other geology applications.  With the advancements of data acquisition techniques, large amounts of geospatial data have been collected from multiple data sources, such as satellite observations, remotely sensed imagery, aerial photography, and model simulations. The geospatial data are growing exponentially to PB (Petabyte) scale even EB (Exabyte) scale . As this presents a great challenge to the traditional database storage, especially in terms of vector spatial data storage due to its complex structure, the traditional spatial database storage is facing a series of questions such as poor scalability and low efficiency of data storage. Consequently, the challenging of spatial data has cause several vital shortcomings. First, only spatial data consist of one of four types of graphic primitive, namely, points, lines, polygons, or pixels can suit in the GIS, other data type can not be used in GIS. Secondly the data themselves can also cause some problems. Much historical data will be taken from historical maps which may not be accurate, and the representation of features from these maps in the GIS at best will only be as accurate as the original source. In reality they are likely to be worse, as new errors are added when the data are captured. Many of the clues about the accuracy of the original source will be lost when the data are captured.  Thirdly, Being on-top of Hadoop, MapReduce programs defined through map and reduce cannot access the constructed spatial index. Hence, users cannot define new spatial operations beyond the already supported ones, range query and self-join.
+
+In this paper we introduce spatial Hadoop, SpatialHadoop is an open source MapReduce extension designed specifically to handle huge datasets of spatial data on Apache Hadoop. SpatialHadoop is shipped with built-in spatial high level language, spatial data types, spatial indexes and efficient spatial operations. Spatial Hadoop has overcome the shortcoming of GIS. (1) \cite{eldawy2015spatialhadoop} SpatialHadoop is build-in Hadoop consequently, Spatial Hadoop inherit nearly all feature of Hadoop (2) SpatialHadoop is different from Hadoop, it support different indexing methods, e.g grid, R tree, and R+ tree, and (3) SpatialHadoop users can interact with Hadoop directly to develop the spatial function that they want to develop. This is in contrast to Hadoop-GIS and other systems that cannot support such kind of flexibility, on the other hand, traditional Hadoop is very restricted in the function they support, however SpatialHadoop has a really well scalability and user friendly interface. All of the spatial index and operation can be edit in the source file, relatively stable than the traditional Hadoop, since the SpatialHadoop is existing as an patch in the Hadoop, any change in the SpatialHadoop will not affect the ground of whole file. 
+
+In this paper, we mainly use two real dataset, OpenStreetMap and Tigger. OpenStreetMap (OSM) \cite{alarabi2014tareeg}, lunched in 2004, is a collaborative community project to create a free editable map of the world. It is considered as the Wikipedia project for maps, where the community can help in building the maps around the world OpenStreetMap has over 1.6 million registered users, where around thirty percent of them have made actual contributions to the maps . As it stands now, Open-StreetMap has a very high accuracy that is comparable to proprietary datasources . OpenStreetMap whole world dataset is free and accessible as an XML 500 GB file called Planet.osm, updated on weekly basis. OpenStreetMap consist of following datatype (1) Node, which is defined as a point in the space associated with a node identifier, latitude and longitude coordinates,(2) Way, which represents a line between two nodes, and associated with the way identifier and the two nodes identifiers of the two end points of the line. The line could be simply a road segment, part of a boundary of a building, city/country boundary, or part of a lake contour (3) Relation, which represents the relation between nodes, ways, or even other relation, and is used to express polygons. For example, to express the boundaries of a certain lake, the nodes need to be defined, then the ways that connect nodes to each other, then a relation that connects the ways together to express the lake boundary.
+
+TIGER/Line files are a digital database of geographic features, such as roads, railroads, rivers, lakes, political boundaries, and census statistical boundaries, covering the entire United States. The Tiger database contains information about these features, such as their location in latitude and longitude, their names, the types of features, address ranges for most streets, the geographic relationship to other features, and other related information.
+
+% Motivation Paragraph
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Show the importance of the problem you are addressing here by giving real-world applications that can benefit from this work.
+
+
+
+
+% Problem Paragraph
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Short description for the problem/area of research you are handling in this paper.
+% This paragraph should start with "In this paper, we"
+
+
+
+
+%Challenges Paragraph
+% show why this problem is not trivial. For instances, the number and nature of parameters you are trying to consider,
+
+
+
+%Limitation of existing work Paragraph
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mention few examples of the most related work from the existing ones.
+% Explicitly list the limitations and drawbacks of them as groups or one by one.
+
+
+
+%%Our approach, Paragraph 1
+% Here, you describe the main idea of your solution
+
+
+
+%%Our approach, Paragraph 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Here, you list the promises and advantages of your solution over the existing one.
+% remember, at least the limitations you mentioned above should be clearly handled here plus other features (if any). You might refer to some interesting result from your experimental evaluation, e.g., our system is 2X faster/accurate/less-memory than solution Y in ~\cite{referenceY}.
+% you might also refer to your cost analysis, (if exists),. e.g., our solution costs logn while the best existing one~\cite{Some-Reference} costs nlogn
+
+
+
+%%Our approach, Paragraph 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Describe how your solution work. This description should be able to justify the advantages you just mentioned in the previous Paragraph
+
+
+
+%%Our approach Paragraph 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Here, you might talk about your optimized version, if any, and/or the parameters/assumptions to control your solution.
+
+
+
+%%Our Contributoin list
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%The main contributions of our work are:
+%\begin{itemize}\itemsep-1pt \parskip-1pt
+%\parsep-1pt
+%\item We propose the {\em W} solution  that .
+%\item We introduce...
+%\item We study...
+%\item We provide a cost analysis
+%\item We conduct an intensive empirical evaluation on real and synthetic data sets to study the performance/accuracy/sclability/usability etc.
+%\end{itemize}
+
+
+
+% Paper Organization Paragraph
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%The rest of the paper is organized as follows.
+%The study of related work is given in Section~\ref{sect:related}.
+%Section~\ref{sect:preliminaries} sets the preliminaries.
+%Part G is detailed in Section~\ref{g}
+%The {\em W} system is experimentally evaluated in Section~\ref{sec:experiments}.
+%Finally, Section~\ref{sect:conclusion} concludes the paper.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Introduction size is up to 1.5 pages (3 columns at max)
+

@@ -1,0 +1,13 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
+The style file: abbrv.bst
+Database file #1: References.bib
+Repeated entry---line 303 of file References.bib
+ : @inproceedings{alarabi2014tareeg
+ :                                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 312 of file References.bib
+ : @article{eldawy2013demonstration
+ :                                 ,
+I'm skipping whatever remains of this entry
+Warning--empty journal in yu2015geospark
+(There were 2 error messages)

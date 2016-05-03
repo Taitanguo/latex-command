@@ -1,0 +1,118 @@
+
+\section{Graph Construction and Maintenance}
+\label{sect:constructionModule}
+In this section, we explain how the VGI data is leveraged to construct and maintain the {\em ATAG} structure.
+The core of the graph is extracted from the open access maps~\cite{AEA+14} to get the set of nodes, edges and distance costs.
+Then, the attributes' weights are obtained according to the nature of the attribute. We can classify the weights into two categories based on the complexity to extract from the available data, named, {\em simple weights}, e.g., risk, services, and {\em complex weights}, e.g., travel time.
+
+
+
+
+\subsection{Simple Weights Extraction}
+The translation of the number of car accidents and crimes, e.g., NHTSA~\cite{NHT+13}, into a risk weight for an edge is done through a straight forward process, i.e., normalizing this number by the edge distance as follows.
+%$Risk(e_i)_t$ = total number of risk events during the time slot $t$ around the edge $e_i$\/ the total distance of $e_i$
+ \begin{center}
+%$Risk(e)_t$ = $\dfrac{crimes~and~accidents~on~e~in~time~slot~t}{distance~of~e}$
+%$w(e)_{risk,t}$ = $\dfrac{risk~events~on~e~in~time~slot~t}{distance~of~e}$
+$w(e)_{risk,t}$ = $\dfrac{risks(e)_t}{distance(e)}$
+\end{center}
+%
+%
+%Normally, the risk value goes up during the night time slots of the day, the larger the value the riskier the road.
+Normally, the larger the value the riskier the road.
+%
+For those attributes with maximization dominance property, we store the {\em complementary} weight. We do this to make the weights consistent with the minimization function in the shortest path calculation. For example, the optimal path based on the {\em services} attribute is the one that maximizes the number of services, e.g., restaurants and gas stations. Therefore, its weight is obtained as follows.
+\begin{center}
+%$Risk(e)_t$ = $\dfrac{crimes~and~accidents~on~e~in~time~slot~t}{distance~of~e}$
+%$w(e)_{risk,t}$ = $\dfrac{risk~events~on~e~in~time~slot~t}{distance~of~e}$
+$w(e)_{services,t}$ = $\dfrac{NonService~Addresses(e)_t}{total~addresses(e)}$
+\end{center}
+%
+The number of available services on a road edge differs according to the time of the day. For example, the number of open Cinemas increases at night while the number of open athletic centers increases in the morning.
+%
+%The main function of this module is to extract and store valid GPS tracks from the set of all tracks obtained. These valid tracks are made available to the query processor for answering routing queries.
+
+\subsection{Complex Weights Extraction}
+In fact, the most complex weight to obtain is the travel time cost during specific time interval of the day.
+To achieve that, we leverage the public GPS traces~\cite{JOS13}. So, in the rest of this section we focus on describing how to maintain the travel time weights for each edge in the {\em ATAG} using the available GPS tracks.
+
+%\textbf{Main Idea.}
+To reflect the most recent pattern of the travel time costs on the {\em ATAG}, we do the following.
+Initially, we map-match each track to the correct edge. Then, we mine the set of in-hand GPS tracks to pickup the valid ones, e.g., not violated speed limit nor direction of the edge. For each edge in the graph, we override its weight by calculating the average travel time cost of those valid tracks in the corresponding time slot.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{algorithm} [t]
+%\caption{ATAG Maintenance w.r.t. Travel Time}
+%\label{alg:maintainATAG}
+%\begin{footnotesize}
+%\textbf{Input:} $ATAG~G(N, E, W)$,~$Set~of~GPS~tracks~TRAJ$
+%\begin{algorithmic}[1]
+%%\STATE {\em Step 1. Initialize the data structures}
+%\STATE $W_{et}$: Weights for the edge $e \in E$ at time $t$ ~\label{alg:maintainATAG:initialize}
+%\FORALL{time slot $t \in T$}
+%	 \STATE $TRAJ_t \gets$ tracks in $TRAJ$ at time slot $t$ ~\label{alg:maintainATAG:relevantGPSTracks}
+%	\FORALL{$traj \in TRAJ_t$}
+%		 \STATE $MapMatch$ $traj$ to its corresponding edge(s)  ~\label{alg:maintainATAG:mapMatch}
+%		 \STATE $E_{traj} \gets$ edge list based on $traj$
+%		\FORALL{$e \in E_{traj}$}
+%			 \STATE $W_{e} \gets$ time difference between first and last GPS points on $e$ ~\label{alg:maintainATAG:getTravelTime}
+%		\ENDFOR
+%	\ENDFOR
+%	\FORALL{$e \in E$}
+%		 \STATE $W_{et} \gets$ average weight of $e$ for $t$ from $W_{e}$ ~\label{alg:maintainATAG:averageTravelTime}
+%	\ENDFOR	
+%\ENDFOR
+%\STATE Reflect $W_{et}$ to $ATAG$ ~\label{alg:maintainATAG:updateATAG}
+%\STATE \textbf{return} $ATAG$ ~\label{alg:maintainATAG:returnATAG}
+%\end{algorithmic}
+%\end{footnotesize}
+%\end{algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\textbf{Algorithm.}
+%Algorithm~\ref{alg:maintainATAG} presents the pseudocode for the {\em ATAG} maintenance algorithm, which performs the core function of the construction and maintenance module. The input consists of an attributes time aggregated graph and a set of GPS trajectories.
+%The output is the {\em ATAG} with updated weights, i.e., for travel time attribute, based on the given set of trajectories for each edge at (1) each time instant, in case of the initial construction of the {\em ATAG}, or (2) the current time instant, in case of {\em ATAG} instant update.
+%
+%The algorithm starts by examining each time slot and extracting the relevant trajectories for that time slot, (Lines~\ref{alg:maintainATAG:relevantGPSTracks} in Algorithm~\ref{alg:maintainATAG}). For each trajectory relevant to a certain time slot, the trajectory is map-matched to its corresponding edge. The travel time cost of each edge that the trajectory spans is then updated and stored in $W_e$, (Lines~\ref{alg:maintainATAG:mapMatch}~to~\ref{alg:maintainATAG:getTravelTime} in Algorithm~\ref{alg:maintainATAG}).
+%
+%The $W_e$ contains a vector of weights, i.e., travel time, for each edge $e$ based on each trajectory encountered for $e$. The algorithm calculates the average of the values in $W_e$ and uses this as the weight for the edge $e$ at time slot $t$; this information is stored in $W_{et}$, (line~\ref{alg:maintainATAG:averageTravelTime}). Once all time slots are considered, the values in $W_{et}$ are pushed to the {\em ATAG} which is returned with up-to-date weights in the corresponding time slot(s), (Lines~\ref{alg:maintainATAG:updateATAG} and \ref{alg:maintainATAG:returnATAG}).
+
+
+%\noindent \textit{\underline{Example:}}
+\textbf{Example.}
+Figure~\ref{fig:updateExample} gives illustrates how we analyze the collected GPS tracks and leverage them to update the {\em ATAG} data structure. In this example, we have a track with six points, $p_1$, $p_1$, ... $p_6$. The value on the arrow between each pair of points represents the time cost it takes to travel from point $p_i$, to its next point $p_j$, e.g., cost from $p_1$ to $p_2$ is one minute. When we map-match this track to the equivalent nodes and edges in the {\em ATAG}, we find that $p_1$ is matched to node $n_1$, and $p_4$ is matched to node $n_3$ and total cost for the edge connecting $n_1$ and $n_3$ will be three minutes, assuming the trip will start at time slot $t_0$. In the same way, the edge between nodes $n_3$ and $n_4$ will be one minute, assuming the start at time slot $t_3$. In some cases, the GPS points appear after the start node or before the end node of an edge. To handle this, we extrapolate the weight according to the ratio between the covered distance by the GPS points to the total distance of that edge as follows.
+\begin{center}
+$w(e)_{travelTime,t}$ = $\dfrac{\textstyle time(p_l)-time(p_f)}{distance(p_f,~p_l)}\times distance(e)$
+\end{center}
+%
+Here, $p_f$ is the first mapped GPS point to $e$ after/at its start node, and $p_l$ is the last point before/at the end node of $e$.
+
+
+%\begin{figure}[t]
+%  \begin{center}
+%  \includegraphics[width=0.70\columnwidth]{Paper_Updating_Maintenance2.eps}
+%  \vspace{-10pt}
+%  \caption{Using GPS Tracks to Update Edge Weights}
+%  \vspace{-15pt}
+%  \label{fig:updateExample}
+%  \end{center}
+%\end{figure}
+
+%
+%An alternative to the ATAG data structure for analyzing and storing GPS trajectories is a matrix. Given a set of GPS trajectories, the system may store each GPS trajectory that corresponds to a specific source, destination, and start time in this three dimensional matrix, named, tracks matrix. Figure~\ref{fig:matrix_example} shows an example comprising four locations and three time instants. Each cell in the matrix stores a certain number of GPS trajectories (e.g., the cell at $N1, N2$ at time $t_1$ stores two trajectories whereas the cell at $N4, N3$ at time $t_1$ stores one trajectory. This matrix may be very sparse depending on the number of available volunteered commute traces.
+%A central question arises when multiple GPS traces are retrieved from a single cell in the matrix; which trajectory should we recommend to the user? Alternatives include the trajectory with the fastest travel time, the trajectory with travel time closest to the average, the trajectory with median travel time, the trajectory with mode (e.g., most frequent) travel time, etc. In our current implementation, we present these options for the user to change at will. The system defaults to the trajectory with travel time closest to the average if no user preference is specified.
+%
+%\begin{figure}[t]
+%  \begin{center}
+%  \includegraphics[width=0.50\columnwidth]{matrix_example.eps}
+%  \vspace{-10pt}
+%  \caption{Analysis and maintenance using Tracks Matrix}
+%  \vspace{-15pt}
+%  \label{fig:matrix_example}
+%  \end{center}
+%\end{figure}
+%
+%
+%

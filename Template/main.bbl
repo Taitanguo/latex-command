@@ -1,0 +1,130 @@
+\begin{thebibliography}{10}
+
+\bibitem{aji2013hadoop}
+A.~Aji, F.~Wang, H.~Vo, R.~Lee, Q.~Liu, X.~Zhang, and J.~Saltz.
+\newblock Hadoop gis: a high performance spatial data warehousing system over
+  mapreduce.
+\newblock {\em Proceedings of the VLDB Endowment}, 6(11):1009--1020, 2013.
+
+\bibitem{akdogan2010voronoi}
+A.~Akdogan, U.~Demiryurek, F.~Banaei-Kashani, and C.~Shahabi.
+\newblock Voronoi-based geospatial query processing with mapreduce.
+\newblock In {\em Cloud Computing Technology and Science (CloudCom), 2010 IEEE
+  Second International Conference on}, pages 9--16. IEEE, 2010.
+
+\bibitem{alarabi2014tareeg}
+L.~Alarabi, A.~Eldawy, R.~Alghamdi, and M.~F. Mokbel.
+\newblock Tareeg: a mapreduce-based system for extracting spatial data from
+  openstreetmap.
+\newblock In {\em Proceedings of the 22nd ACM SIGSPATIAL International
+  Conference on Advances in Geographic Information Systems}, pages 83--92. ACM,
+  2014.
+
+\bibitem{dean2008mapreduce}
+J.~Dean and S.~Ghemawat.
+\newblock Mapreduce: simplified data processing on large clusters.
+\newblock {\em Communications of the ACM}, 51(1):107--113, 2008.
+
+\bibitem{dittrich2012efficient}
+J.~Dittrich and J.-A. Quian{\'e}-Ruiz.
+\newblock Efficient big data processing in hadoop mapreduce.
+\newblock {\em Proceedings of the VLDB Endowment}, 5(12):2014--2015, 2012.
+
+\bibitem{eldawy2013cg_hadoop}
+A.~Eldawy, Y.~Li, M.~F. Mokbel, and R.~Janardan.
+\newblock Cg\_hadoop: computational geometry in mapreduce.
+\newblock In {\em Proceedings of the 21st ACM SIGSPATIAL International
+  Conference on Advances in Geographic Information Systems}, pages 294--303.
+  ACM, 2013.
+
+\bibitem{eldawy2013demonstration}
+A.~Eldawy and M.~F. Mokbel.
+\newblock A demonstration of spatialhadoop: an efficient mapreduce framework
+  for spatial data.
+\newblock {\em Proceedings of the VLDB Endowment}, 6(12):1230--1233, 2013.
+
+\bibitem{eldawy2014pigeon}
+A.~Eldawy and M.~F. Mokbel.
+\newblock Pigeon: A spatial mapreduce language.
+\newblock In {\em Data Engineering (ICDE), 2014 IEEE 30th International
+  Conference on}, pages 1242--1245. IEEE, 2014.
+
+\bibitem{eldawy2015spatialhadoop}
+A.~Eldawy and M.~F. Mokbel.
+\newblock Spatialhadoop: A mapreduce framework for spatial data.
+\newblock In {\em Data Engineering (ICDE), 2015 IEEE 31st International
+  Conference on}, pages 1352--1363. IEEE, 2015.
+
+\bibitem{evans2014enabling}
+M.~R. Evans, D.~Oliver, K.~Yang, X.~Zhou, and S.~Shekhar.
+\newblock Enabling spatial big data via cybergis: Challenges and opportunities.
+\newblock {\em a book chapter in CyberGIS: Fostering a New Wave of Geospatial
+  Innovation and Discovery (Ed. S. Wang and M. Goodchild)}, 2014.
+
+\bibitem{klein2015pairs}
+L.~J. Klein, F.~J. Marianno, C.~M. Albrecht, M.~Freitag, S.~Lu, N.~Hinds,
+  X.~Shao, S.~Bermudez~Rodriguez, and H.~F. Hamann.
+\newblock Pairs: A scalable geo-spatial data analytics platform.
+\newblock In {\em Big Data (Big Data), 2015 IEEE International Conference on},
+  pages 1290--1298. IEEE, 2015.
+
+\bibitem{lee2014efficient}
+K.~Lee, R.~K. Ganti, M.~Srivatsa, and L.~Liu.
+\newblock Efficient spatial query processing for big data.
+\newblock In {\em Proceedings of the 22nd ACM SIGSPATIAL International
+  Conference on Advances in Geographic Information Systems}, pages 469--472.
+  ACM, 2014.
+
+\bibitem{liu2009implementing}
+X.~Liu, J.~Han, Y.~Zhong, C.~Han, and X.~He.
+\newblock Implementing webgis on hadoop: A case study of improving small file
+  i/o performance on hdfs.
+\newblock In {\em Cluster Computing and Workshops, 2009. CLUSTER'09. IEEE
+  International Conference on}, pages 1--8. IEEE, 2009.
+
+\bibitem{lu2013sksopen}
+Y.~Lu, M.~Zhang, S.~Witherspoon, Y.~Yesha, and N.~Rishe.
+\newblock Sksopen: Efficient indexing, querying, and visualization of
+  geo-spatial big data.
+\newblock In {\em Machine Learning and Applications (ICMLA), 2013 12th
+  International Conference on}, volume~2, pages 495--500. IEEE, 2013.
+
+\bibitem{tan2012clost}
+H.~Tan, W.~Luo, and L.~M. Ni.
+\newblock Clost: a hadoop-based storage system for big spatio-temporal data
+  analytics.
+\newblock In {\em Proceedings of the 21st ACM international conference on
+  Information and knowledge management}, pages 2139--2143. ACM, 2012.
+
+\bibitem{taylor2010overview}
+R.~C. Taylor.
+\newblock An overview of the hadoop/mapreduce/hbase framework and its current
+  applications in bioinformatics.
+\newblock {\em BMC bioinformatics}, 11(Suppl 12):S1, 2010.
+
+\bibitem{yu2015geospark}
+J.~Yu, J.~Wu, and M.~Sarwat.
+\newblock Geospark: A cluster computing framework for processing large-scale
+  spatial data.
+\newblock 2015.
+
+\bibitem{zhang2015large}
+J.~Zhang, S.~You, and L.~Gruenwald.
+\newblock Large-scale spatial data processing on gpus and gpu-accelerated
+  clusters.
+\newblock {\em SIGSPATIAL Special}, 6(3):27--34, 2015.
+
+\bibitem{zhang2009spatial}
+S.~Zhang, J.~Han, Z.~Liu, K.~Wang, and S.~Feng.
+\newblock Spatial queries evaluation with mapreduce.
+\newblock In {\em Grid and Cooperative Computing, 2009. GCC'09. Eighth
+  International Conference on}, pages 287--292. IEEE, 2009.
+
+\bibitem{zheng2013research}
+K.~Zheng and Y.~Fu.
+\newblock Research on vector spatial data storage schema based on hadoop
+  platform.
+\newblock {\em International Journal of Database Theory and Application},
+  6(5):85--94, 2013.
+
+\end{thebibliography}
